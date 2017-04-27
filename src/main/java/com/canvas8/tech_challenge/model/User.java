@@ -1,23 +1,41 @@
 package com.canvas8.tech_challenge.model;
 
+import java.io.Serializable;
 import java.util.Date;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-public class User {
+import javax.persistence.Table;
+
+@Entity
+@Table(name="User")
+public class User implements Serializable{
 	
 	@Id
-	@GeneratedValue
-	private int userId;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int id;
+	@Column
 	private String firstName;
+	@Column
 	private String lastName;
+	@Column
 	private boolean accountLocked;
+	@Column
 	private String postcode;
+	@Column
 	private boolean enabled;
+	@Column
 	private int corporateGroupId;
+	@Column
 	private Date createdDate;
+	@Column	
 	private Date expiryDate;
+	@Column
 	private String emailId;
+	@Column
 	private String password;
 	
 	public boolean isAccountLocked() {
@@ -33,10 +51,10 @@ public class User {
 		this.enabled = enabled;
 	}
 	public int getUserId() {
-		return userId;
+		return id;
 	}
 	public void setUserId(int userId) {
-		this.userId = userId;
+		this.id = userId;
 	}
 	
 	public String getFirstName() {
